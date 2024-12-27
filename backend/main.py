@@ -1,7 +1,9 @@
 from fastapi import FastAPI
+from core.config import settings
 
-app = FastAPI(title="Blog", version="0.1.0")
+app = FastAPI(title=settings.PROJECT_TITLE, version=settings.PROJECT_VERSION)
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello World"}
+@app.get("/", tags=["Blog"])
+def hello():
+    """Basic route to test the server."""
+    return {"msg": "Hello FastAPI! 🚀"}
